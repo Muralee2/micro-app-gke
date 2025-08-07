@@ -1,9 +1,10 @@
 resource "google_project_service" "services" {
   for_each = toset([
-    "container.googleapis.com",
     "compute.googleapis.com",
+    "container.googleapis.com",
     "dns.googleapis.com",
   ])
-  project = var.project_id
-  service = each.value
+  project            = var.project_id
+  service            = each.key
+  disable_on_destroy = false
 }
