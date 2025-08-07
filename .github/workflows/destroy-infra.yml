@@ -1,22 +1,11 @@
-name: Terraform GKE Deployment
+name: Terraform Destroy GKE
 
 on:
-  push:
-    branches: [main]
-  pull_request:
-  workflow_dispatch:
-    inputs:
-      action:
-        description: 'Terraform Action'
-        required: true
-        default: 'apply'
-        type: choice
-        options:
-          - apply
-          - destroy
+  workflow_dispatch:  # Only manual trigger
 
 jobs:
-  terraform:
+  terraform-destroy:
+    name: 'Terraform Destroy'
     runs-on: ubuntu-latest
 
     steps:
@@ -39,14 +28,6 @@ jobs:
       - name: Terraform Init
         run: terraform init
 
-      - name: Terraform Plan
-        if: ${{ github.event_name != 'workflow_dispatch' || github.event.inputs.action == 'apply' }}
-        run: terraform plan -var-file="terraform.tfvars"
-
-      - name: Terraform Apply
-        if: ${{ github.event_name != 'workflow_dispatch' || github.event.inputs.action == 'apply' }}
-        run: terraform apply -auto-approve -var-file="terraform.tfvars"
-
       - name: Terraform Destroy
-        if: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.action == 'destroy' }}
         run: terraform destroy -auto-approve -var-file="terraform.tfvars"
+
