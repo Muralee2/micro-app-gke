@@ -41,11 +41,11 @@ jobs:
         run: terraform init
 
       - name: Terraform Plan
-        if: ${{ github.event.inputs.action == 'apply' || github.event.inputs.action == '' }}
+        if: ${{ github.event.inputs.action == 'apply' || github.event_name == 'push' || github.event_name == 'pull_request' }}
         run: terraform plan -var-file="terraform.tfvars"
 
       - name: Terraform Apply
-        if: ${{ github.event.inputs.action == 'apply' || github.event.inputs.action == '' }}
+        if: ${{ github.event.inputs.action == 'apply' || github.event_name == 'push' || github.event_name == 'pull_request' }}
         run: terraform apply -auto-approve -var-file="terraform.tfvars"
 
       - name: Terraform Destroy
