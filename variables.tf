@@ -31,3 +31,14 @@ variable "firewall_rules" {
     destination_ranges = list(string)
   }))
 }
+variable "node_count" {
+  default = 1
+}
+
+variable "machine_type" {
+  default = "e2-medium"
+}
+
+variable "disk_size" {
+  default = 30
+}
