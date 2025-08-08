@@ -7,7 +7,7 @@ terraform {
   }
 
   backend "gcs" {
-    bucket = "samurai-og"  # Replace with your bucket
+    bucket = "samurai-og1"  # Replace with your bucket
     prefix = "terraform/state"
   }
 }
