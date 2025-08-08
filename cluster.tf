@@ -1,6 +1,6 @@
 resource "google_container_cluster" "primary" {
   name                     = var.cluster_name
-  location                 = var.region
+  location                 = var.zone        # ✅ change from var.region to var.zone
   initial_node_count       = 1
 
   network    = google_compute_network.vpc.id
