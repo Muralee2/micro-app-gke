@@ -1,4 +1,4 @@
-project_id   = "smooth-guru-468107-p1"
+project_id   = "able-armor-468408-v6"
 region       = "us-central1"
 cluster_name = "gke-cluster-og"
 
