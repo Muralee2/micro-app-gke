@@ -1,6 +1,6 @@
 project_id   = "smooth-guru-468107-p1"
 region       = "us-west1"
-cluster_name = "gke-cluster"
+cluster_name = "gke-cluster-og"
 
 firewall_rules = {
   allow-egress-to-master = {
